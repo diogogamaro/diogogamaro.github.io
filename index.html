@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diogo Amaro</title>
+  <meta name="description" content="Biólogo dedicado a apoiar quem estuda e gere a natureza: apps de recolha de dados de campo e organização do trabalho digital.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232f5d46'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23f4f1ea' text-anchor='middle'%3EDA%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --text: #1f2a24;
+      --muted: #5b6660;
+      --accent: #2f5d46;
+      --line: #d9d3c5;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141a17;
+        --text: #e9e6de;
+        --muted: #9aa49e;
+        --accent: #8cc0a2;
+        --line: #2b3530;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    /* Mostra só a língua ativa. Sem JavaScript, fica o português. */
+    html[lang="pt"] [lang="en"],
+    html[lang="en"] [lang="pt"] { display: none; }
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 24px;
+    }
+    .lang {
+      font: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 4px 12px;
+      cursor: pointer;
+    }
+    .lang:hover, .lang:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 24px 48px;
+    }
+    .card { max-width: 640px; margin: 0 auto; width: 100%; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 7vw, 3.6rem);
+      line-height: 1.1;
+      margin: 0 0 20px;
+      letter-spacing: -0.01em;
+    }
+    .rule {
+      width: 56px;
+      height: 3px;
+      background: var(--accent);
+      border: 0;
+      margin: 0 0 24px;
+    }
+    p.lead {
+      font-size: clamp(1.1rem, 2.6vw, 1.3rem);
+      color: var(--text);
+      margin: 0 0 36px;
+      max-width: 34em;
+    }
+    ul.contact {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+    }
+    ul.contact a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      overflow-wrap: anywhere;
+    }
+    ul.contact a:hover, ul.contact a:focus-visible { border-bottom-color: var(--accent); }
+    .label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    footer {
+      padding: 20px 24px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="lang" type="button" id="lang-toggle" aria-label="Mudar língua / Change language">
+      <span lang="pt">EN</span><span lang="en">PT</span>
+    </button>
+  </header>
+
+  <main>
+    <div class="card">
+      <h1>Diogo Amaro</h1>
+      <hr class="rule">
+      <p class="lead" lang="pt">Biólogo dedicado a apoiar quem estuda e gere a natureza: apps de recolha de dados de campo e organização do trabalho digital.</p>
+      <p class="lead" lang="en">Biologist supporting those who study and manage nature: field data collection apps and digital work organisation.</p>
+
+      <ul class="contact">
+        <li>
+          <span class="label">Email</span>
+          <a href="mailto:diogo@diogogamaro.com">diogo@diogogamaro.com</a>
+        </li>
+        <li>
+          <span class="label">LinkedIn</span>
+          <a href="https://www.linkedin.com/in/diogogamaro" rel="noopener">linkedin.com/in/diogogamaro</a>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer>
+    <span lang="pt">Site em construção.</span>
+    <span lang="en">Website under construction.</span>
+  </footer>
+
+  <script>
+    // Escolhe a língua: inglês se o browser não estiver em português.
+    // Não guarda nada no browser (sem cookies, sem localStorage).
+    (function () {
+      var root = document.documentElement;
+      var browserLang = (navigator.language || "pt").toLowerCase();
+      setLang(browserLang.indexOf("pt") === 0 ? "pt" : "en");
+
+      document.getElementById("lang-toggle").addEventListener("click", function () {
+        setLang(root.lang === "pt" ? "en" : "pt");
+      });
+
+      function setLang(l) {
+        root.lang = l;
+        document.title = "Diogo Amaro";
+      }
+    })();
+  </script>
+</body>
+</html>
